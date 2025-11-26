@@ -36,6 +36,7 @@ public class TarefaService {
                         tarefaModel.getTitulo(),
                         tarefaModel.getDescricao(),
                         tarefaModel.getDataVencimento(),
+                        tarefaModel.getDataCriacao(),
                         tarefaModel.getPrioridade()
                 )
         ).collect(Collectors.toList());

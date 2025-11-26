@@ -1,9 +1,11 @@
 package com.example.gerenciadortarefas.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tarefa")
@@ -14,12 +16,17 @@ public class TarefaModel {
     private Long id;
     private String titulo;
     private String descricao;
-    private LocalDate dataVencimento;
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime dataVencimento;
     private String prioridade;
+
 
     public TarefaModel(){
 
     }
+
+    
+
 
     public Long getId() {
         return id;
@@ -45,11 +52,11 @@ public class TarefaModel {
         this.descricao = descricao;
     }
 
-    public LocalDate getDataVencimento() {
+    public LocalDateTime getDataVencimento() {
         return dataVencimento;
     }
 
-    public void setDataVencimento(LocalDate dataVencimento) {
+    public void setDataVencimento(LocalDateTime dataVencimento) {
         this.dataVencimento = dataVencimento;
     }
 
