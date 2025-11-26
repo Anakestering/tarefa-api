@@ -19,13 +19,13 @@ public class TarefaController {
     @Autowired
     private TarefaService tarefaService;
 
-    @DeleteMapping("/deletarTarefa/{id}")
+    @DeleteMapping("/deletarUsuario/{id}")
     public ResponseEntity<String> deletarTarefa(@PathVariable Long id){
         try{
             tarefaService.deletarTarefa(id);
-            return ResponseEntity.ok("Usuário deletado com sucesso");
+            return ResponseEntity.ok("Tarefa deletada com sucesso");
         }catch(Exception e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Erro ao deletar o usuário. Verifique os dados e tente novamente");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Erro ao deletar tarefa. Verifique os dados e tente novamente");
         }
     }
 
@@ -34,7 +34,7 @@ public class TarefaController {
 
         try{
             tarefaService.cadastrarTarefa(tarefa);
-            String mensagemSucesso = "Usuario " + tarefa.nome() + " cadastrado com sucesso";
+            String mensagemSucesso = "Tarefa " + tarefa.titulo() + " cadastrado com sucesso";
             return ResponseEntity.status(HttpStatus.OK).body(mensagemSucesso);
 
         }catch (Exception e){
@@ -53,7 +53,7 @@ public class TarefaController {
     public ResponseEntity<String> atualizarTarefa(@PathVariable Long id, @RequestBody TarefaDTO tarefaDTO){
         try{
             tarefaService.atualizarTarefa(id, tarefaDTO);
-            return ResponseEntity.ok("Usuário atualizado!!");
+            return ResponseEntity.ok("Tarefa atualizada!!");
         }catch(RuntimeException e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }

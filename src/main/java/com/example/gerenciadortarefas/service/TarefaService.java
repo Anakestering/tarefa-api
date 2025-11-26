@@ -20,11 +20,10 @@ public class TarefaService {
 
     public TarefaModel cadastrarTarefa(TarefaDTO dto){
         TarefaModel novoTarefa = new TarefaModel();
-        novoTarefa.setNome(dto.nome());
-        novoTarefa.setEmail(dto.email());
-        novoTarefa.setSenha(dto.senha());
-        novoTarefa.setTelefone(dto.telefone());
-        novoTarefa.setDataNascimento(dto.dataNascimento());
+        novoTarefa.setTitulo(dto.titulo());
+        novoTarefa.setDescricao(dto.descricao());
+        novoTarefa.setDataVencimento(dto.dataVencimento());
+        novoTarefa.setPrioridade(dto.prioridade());
 
         return tarefaRepository.save(novoTarefa);
     }
@@ -34,10 +33,10 @@ public class TarefaService {
         return tarefa.stream().map(tarefaModel ->
                 new TarefaListaDTO(
                         tarefaModel.getId(),
-                        tarefaModel.getNome(),
-                        tarefaModel.getEmail(),
-                        tarefaModel.getTelefone(),
-                        tarefaModel.getDataNascimento()
+                        tarefaModel.getTitulo(),
+                        tarefaModel.getDescricao(),
+                        tarefaModel.getDataVencimento(),
+                        tarefaModel.getPrioridade()
                 )
         ).collect(Collectors.toList());
     }
@@ -60,9 +59,10 @@ public class TarefaService {
 
         TarefaModel tarefaExistente = optionalTarefa.get();
 
-        tarefaExistente.setNome(tarefaDTO.nome());
-        tarefaExistente.setEmail(tarefaDTO.email());
-        tarefaExistente.setTelefone(tarefaDTO.telefone());
+        tarefaExistente.setTitulo(tarefaDTO.titulo());
+        tarefaExistente.setDescricao(tarefaDTO.descricao());
+        tarefaExistente.setDataVencimento(tarefaDTO.dataVencimento());
+        tarefaExistente.setPrioridade(tarefaDTO.prioridade());
 
         tarefaRepository.save(tarefaExistente);
     }

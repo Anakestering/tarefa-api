@@ -1,9 +1,11 @@
 package com.example.gerenciadortarefas.dto;
 
+import java.time.LocalDate;
+
 public record TarefaDTO (
-        String nome,
-        String email,
-        String senha,
-        String telefone,
-        String dataNascimento
+        String titulo,
+        String descricao,
+        LocalDate dataVencimento,
+        String prioridade
+
 ){}

@@ -3,6 +3,8 @@ package com.example.gerenciadortarefas.Model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "tarefa")
 public class TarefaModel {
@@ -10,11 +12,10 @@ public class TarefaModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
-    private String nome;
-    private String email;
-    private String senha;
-    private String telefone;
-    private String dataNascimento;
+    private String titulo;
+    private String descricao;
+    private LocalDate dataVencimento;
+    private String prioridade;
 
     public TarefaModel(){
 
@@ -28,43 +29,35 @@ public class TarefaModel {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public String getEmail() {
-        return email;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public String getSenha() {
-        return senha;
+    public LocalDate getDataVencimento() {
+        return dataVencimento;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setDataVencimento(LocalDate dataVencimento) {
+        this.dataVencimento = dataVencimento;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getPrioridade() {
+        return prioridade;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setPrioridade(String prioridade) {
+        this.prioridade = prioridade;
     }
 }
